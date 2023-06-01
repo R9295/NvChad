@@ -63,5 +63,12 @@ require("lspconfig").lua_ls.setup {
     },
   },
 }
+local lsps = {"gopls", "clangd", "rust_analyzer", "jedi_language_server"}
 
+for _, val in ipairs(lsps) do
+require("lspconfig")[val].setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+}
+end
 return M
